@@ -3,6 +3,9 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+DB_NAME = os.environ['DB_NAME']
+DB_USER = os.environ['DB_USER']
+DB_PASS = os.environ['DB_PASS']
 
 DEBUG = os.environ.get('DEBUG', 'on') == 'on'
 
@@ -34,7 +37,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = 'drf_react.urls'
+ROOT_URLCONF = 'emissions_app.urls'
 
 TEMPLATES = [
     {
@@ -52,7 +55,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'drf_react.wsgi.application'
+WSGI_APPLICATION = 'emissions_app.wsgi.application'
 
 ####
 #DATABASE
@@ -60,8 +63,12 @@ WSGI_APPLICATION = 'drf_react.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASS,
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -98,4 +105,7 @@ WEBPACK_LOADER = {
 	'BUNDLE_DIR_NAME': 'bundles/',
 	'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
 	}
+}
+
+REST_FRAMEWORK = {
 }

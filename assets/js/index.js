@@ -19,14 +19,14 @@ var BooksList = React.createClass({
 
     componentDidMount: function() {
         this.loadBooksFromServer();
-        setInterval(this.loadBooksFromServer, 
+        setInterval(this.loadBooksFromServer,
                     this.props.pollInterval)
-    }, 
+    },
     render: function() {
         if (this.state.data) {
             console.log('DATA!')
             var bookNodes = this.state.data.map(function(book){
-                return <li> {book.title} </li>
+                return <li> {book.company} </li>
             })
         }
         return (
@@ -40,5 +40,5 @@ var BooksList = React.createClass({
     }
 })
 
-ReactDOM.render(<BooksList url='/api/' pollInterval={1000} />, 
+ReactDOM.render(<BooksList url='/api/' pollInterval={1000} />,
     document.getElementById('container'))
