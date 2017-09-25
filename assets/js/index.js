@@ -1,44 +1,43 @@
-var React = require('react')
-var ReactDOM = require('react-dom')
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { FilterableEntryTable } from './FilterableEntryTable';
 
-var BooksList = React.createClass({
-    loadBooksFromServer: function(){
-        $.ajax({
-            url: this.props.url,
-            datatype: 'json',
-            cache: false,
-            success: function(data) {
-                this.setState({data: data});
-            }.bind(this)
-        })
-    },
+class EntriesList extends React.Component {
+  constructor(props) {
+    super(props);
 
-    getInitialState: function() {
-        return {data: []};
-    },
+    this.state = {data: [] };
+  }
 
-    componentDidMount: function() {
-        this.loadBooksFromServer();
-        setInterval(this.loadBooksFromServer,
-                    this.props.pollInterval)
-    },
-    render: function() {
-        if (this.state.data) {
-            console.log('DATA!')
-            var bookNodes = this.state.data.map(function(book){
-                return <li> {book.company} </li>
-            })
-        }
-        return (
-            <div>
-                <h1>Hello React!</h1>
-                <ul>
-                    {bookNodes}
-                </ul>
-            </div>
-        )
-    }
-})
+  //Fetch the dataset from the API
+  loadEntriesFromServer() {
+    $.ajax({
+      url: this.props.url,
+      datatype: 'json',
+      cache: false,
+      success: function(data) {
+        this.setState({data: data});
+      }.bind(this)
+    })
+  }
 
-ReactDOM.render(<BooksList url='/api/' pollInterval={1000} />,
-    document.getElementById('container'))
+  //When component mounts, run the ajax request to the API
+  componentDidMount() {
+    this.loadEntriesFromServer();
+  }
+
+  //Render the filtered table of entries
+  render() {
+    return (
+      <FilterableEntryTable entries={this.state.data} />
+    )
+  }
+}
+
+//Prop Types
+EntriesList.propTypes = {
+  url: React.PropTypes.string.isRequired,
+};
+
+ReactDOM.render(<EntriesList url='/api/' />,
+                document.getElementById('container'))
