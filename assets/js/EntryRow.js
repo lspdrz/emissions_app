@@ -6,17 +6,26 @@ export class EntryRow extends React.Component {
 
   }
 
-  makeLowerCase(e) {
-    return
+  showCountyInfo(county) {
+    var x = document.getElementById('CountyView');
+    if (x.style.display === 'none') {
+      x.style.display = 'block';
+    } else {
+      x.style.display = 'none';
+    }
   }
 
   render() {
-    var company = this.props.entry.company;
-    var sic_description = this.props.sic_description;
+    var entry = this.props.entry;
+    var county = entry.county;
     return (
       <ul>
-        {this.props.entry.company}
-        {this.props.entry.sic_description}
+        <button onClick={this.showCountyInfo}>
+          {county.charAt(0) + county.slice(1).toLowerCase()}
+        </button>
+        <div id="CountyView">
+          {entry.company}
+        </div>
       </ul>
     );
   }

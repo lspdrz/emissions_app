@@ -17,7 +17,7 @@ export class SearchBar extends React.Component {
       <form>
         <input
                type="text"
-               placeholder="Search for Company"
+               placeholder="Search for County"
                value={this.props.filterText}
                onChange={this.handleFilterTextInputChange} />
       </form>

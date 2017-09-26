@@ -13,8 +13,9 @@ export class EntryTable extends React.Component {
 
     //Push the entry to rows array if entry is equal to user input
     this.props.entries.forEach((entry) => {
+      //Test for upper case user input, since all entries are in upper case
       if (
-        entry.company.indexOf(this.props.filterText) === -1
+        entry.county.indexOf(this.props.filterText.toUpperCase()) === -1
       )
         {
         return;
