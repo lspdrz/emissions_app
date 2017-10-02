@@ -4,15 +4,13 @@ export class EntryRow extends React.Component {
   constructor(props) {
     super(props);
 
+    this.handleShowTableChange = this.handleShowTableChange.bind(this);
   }
 
-  showCountyInfo(county) {
-    var x = document.getElementById('CountyView');
-    if (x.style.display === 'none') {
-      x.style.display = 'block';
-    } else {
-      x.style.display = 'none';
-    }
+  handleShowTableChange(e) {
+    this.props.onShowTableChange(e.target.value);
+    console.log('The link was clicked');
+    console.log(this.props.showTable);
   }
 
   render() {
@@ -20,12 +18,10 @@ export class EntryRow extends React.Component {
     var county = entry.county;
     return (
       <ul>
-        <button onClick={this.showCountyInfo}>
+        <button value={this.props.showTable}
+                onClick={this.handleShowTableChange}>
           {county.charAt(0) + county.slice(1).toLowerCase()}
         </button>
-        <div id="CountyView">
-          {entry.company}
-        </div>
       </ul>
     );
   }
