@@ -41,7 +41,8 @@ export class EntryTable extends React.Component {
       ) {
         return;
         }
-      var newRow = <button onClick={this.handleShowTableChange}
+      var newRow = <button  className="result-button"
+                            onClick={this.handleShowTableChange}
                             key={entry.county}
                             showCounty={entry.county}>
                     {entry.county}

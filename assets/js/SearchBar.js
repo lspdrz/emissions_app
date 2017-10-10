@@ -14,8 +14,9 @@ export class SearchBar extends React.Component {
 
   render() {
     return (
-      <form>
+      <form className="search-form">
         <input
+               className="search-bar"
                type="text"
                placeholder="Search for County"
                value={this.props.filterText}

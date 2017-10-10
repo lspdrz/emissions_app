@@ -1,3 +1,6 @@
+//Require scss
+require('../styles/scss/index.scss');
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { FilterableEntryTable } from './FilterableEntryTable';
@@ -29,7 +32,9 @@ class EntriesList extends React.Component {
   //Render the filtered table of entries
   render() {
     return (
+      <div className="entries-list">
       <FilterableEntryTable entries={this.state.data} />
+      </div>
     )
   }
 }

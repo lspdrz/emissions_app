@@ -29,7 +29,7 @@ module.exports = {
             $: 'jquery',
             jQuery: 'jquery',
             'window.jQuery': 'jquery'
-        })
+        }),
     ],
 
     module: {
@@ -52,8 +52,8 @@ module.exports = {
             // (notice the chaining through the '!' syntax)
             // on all css files
             {
-                test: /\.css$/,
-                use: 'style-loader!css-loader'
+                test: /\.scss$/,
+                loaders: ['style', 'css', 'sass']
             },
             {
                 test: /\.png$/,
