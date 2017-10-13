@@ -64,19 +64,19 @@ WSGI_APPLICATION = 'emissions_app.wsgi.application'
 ####
 
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASS,
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': DB_NAME,
-#         'USER': DB_USER,
-#         'PASSWORD': DB_PASS,
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
-
 ####
 #INTERNATIONALIZATION
 ####
