@@ -1,4 +1,5 @@
 import os
+import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -7,9 +8,10 @@ DB_NAME = os.environ['DB_NAME']
 DB_USER = os.environ['DB_USER']
 DB_PASS = os.environ['DB_PASS']
 
-DEBUG = os.environ.get('DEBUG', 'on') == 'on'
+# DEBUG = os.environ.get('DEBUG', 'on') == 'on'
+DEBUG = FALSE
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [*]
 
 
 INSTALLED_APPS = (
@@ -61,16 +63,19 @@ WSGI_APPLICATION = 'emissions_app.wsgi.application'
 #DATABASE
 ####
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': DB_NAME,
-        'USER': DB_USER,
-        'PASSWORD': DB_PASS,
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': DB_NAME,
+#         'USER': DB_USER,
+#         'PASSWORD': DB_PASS,
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 ####
 #INTERNATIONALIZATION
