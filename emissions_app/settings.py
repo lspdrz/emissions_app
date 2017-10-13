@@ -9,9 +9,9 @@ DB_USER = os.environ['DB_USER']
 DB_PASS = os.environ['DB_PASS']
 
 # DEBUG = os.environ.get('DEBUG', 'on') == 'on'
-DEBUG = FALSE
+DEBUG = 'False'
 
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = (
