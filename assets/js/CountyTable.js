@@ -6,13 +6,19 @@ export class CountyTable extends React.Component {
   }
 
   render() {
-    var county = this.props.showCounty;
+    var county = this.props.county;
     var num = 0;
-    var counties = [];
+    //Array to hold entries for the county selected
+    var countyRows = [];
+    //Go through entries and push all of the corresponding
+    //entries into the counties array:
     this.props.entries.forEach((entry) => {
-      if(county === ".0.1.0:$" + entry.county) {
-        counties.push(entry.county);
-        num ++;
+      if (county === entry.county) {
+        countyRows.push(
+          <li>
+            {entry.county} - {entry.co_tpy}
+          </li>);
+        num++;
       }
     });
 
@@ -20,9 +26,8 @@ export class CountyTable extends React.Component {
       return(
       <div className="county-table">
         <h1>Companies</h1>
-        {counties}
-      {this.props.showCounty}
-      {num}
+        {countyRows}
+        {num}
       </div>
     );
     }
@@ -33,5 +38,7 @@ export class CountyTable extends React.Component {
 
 //Prop Types:
 CountyTable.propTypes = {
-  rows: React.PropTypes.array.isRequired,
+  showTable: React.PropTypes.bool.isRequired,
+  entries: React.PropTypes.array.isRequired,
+  county: React.PropTypes.string.isRequired,
 }

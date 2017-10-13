@@ -1,9 +1,4 @@
-.container {
-
-}
-
 .entries-list {
-  postion: absolute;
   margin: auto;
   top: 0;
   right: 0;
@@ -27,7 +22,7 @@
 .result-button {
   position: relative;
   padding: 6px 15px;
-  bordwer: 2px solid #207cca;
+  border: 2px solid #207cca;
   background-color: #207cca;
   color: #fafafa
 }
