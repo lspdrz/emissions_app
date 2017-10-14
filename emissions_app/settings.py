@@ -70,7 +70,7 @@ DATABASES = {
         'NAME': DB_NAME,
         'USER': DB_USER,
         'PASSWORD': DB_PASS,
-        'HOST': 'localhcost',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }
