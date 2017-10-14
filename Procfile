@@ -1,1 +1,1 @@
-web: gunicorn emissions-app.wsgi --log-file -
+web: gunicorn emissions_app.wsgi:application --log-file -
