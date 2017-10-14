@@ -64,8 +64,12 @@ WSGI_APPLICATION = 'emissions_app.wsgi.application'
 ####
 
 
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
+DATABASES = {
+    # Raises ImproperlyConfigured exception if DATABASE_URL not in
+    # os.environ
+    'default': env.db(),
+}
+
 ####
 #INTERNATIONALIZATION
 ####
