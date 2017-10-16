@@ -25,9 +25,9 @@ export class CountyTable extends React.Component {
     if (this.props.showTable) {
       return(
       <div className="county-table">
-        <h1>Companies</h1>
-        {countyRows}
-        {num}
+        <h1>{this.props.county}</h1>
+        <p>{this.props.county} has {num} companies that need
+        to report their emissions to the TCEQ.</p>
       </div>
     );
     }
