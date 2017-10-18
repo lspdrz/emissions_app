@@ -41,3 +41,16 @@
 .county-table {
   margin: auto;
 }
+
+.emission-stats {
+  list-style-type: none;
+}
+
+.stat {
+  float: left;
+min-height: 1px;
+padding-left: 0.625rem;
+padding-right: 0.625rem;
+position: relative;
+width: 25%;
+}
