@@ -76,6 +76,10 @@ module.exports = {
                 loader: 'url?limit=10000&mimetype=application/octet-stream'
             },
             {
+                test: /\.[ot]tf$/,
+                loader: 'url?limit=10000&mimetype=application/octet-stream'
+            },
+            {
                 test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'file'
             },

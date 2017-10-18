@@ -9,7 +9,7 @@ class EntriesList extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {data: [] };
+    this.state = {data: []};
   }
 
   //Fetch the dataset from the API
@@ -32,8 +32,8 @@ class EntriesList extends React.Component {
   //Render the filtered table of entries
   render() {
     return (
-      <div className="entries-list">
-      <FilterableEntryTable entries={this.state.data} />
+      <div className="react-app">
+        <FilterableEntryTable entries={this.state.data} />
       </div>
     )
   }

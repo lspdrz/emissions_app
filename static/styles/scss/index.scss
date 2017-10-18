@@ -1,4 +1,10 @@
-.entries-list {
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+.react-app {
+  font-family: 'Open Sans'
+}
+
+.search-results {
   margin: auto;
   top: 0;
   right: 0;
@@ -30,4 +36,8 @@
 .result-button:hover {
   background-color: #fafafa;
   color: #207cca;
+}
+
+.county-table {
+  margin: auto;
 }
