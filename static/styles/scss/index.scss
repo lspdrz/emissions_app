@@ -40,6 +40,7 @@
 
 .county-table {
   margin: auto;
+  padding-left: 50px;
 }
 
 .emission-stats {
@@ -48,9 +49,9 @@
 
 .stat {
   float: left;
-min-height: 1px;
-padding-left: 0.625rem;
-padding-right: 0.625rem;
-position: relative;
-width: 25%;
+  min-height: 1px;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  position: relative;
+  width: 25%;
 }

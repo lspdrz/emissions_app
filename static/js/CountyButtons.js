@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class CountyButtonRows extends React.Component {
+export class CountyButtons extends React.Component {
   constructor(props) {
     super(props);
 
@@ -46,4 +46,10 @@ export class CountyButtonRows extends React.Component {
       </div>
     );
   }
+}
+
+CountyButtons.PropTypes = {
+  entries: React.PropTypes.array.isRequired,
+  filterText: React.PropTypes.string.isRequired,
+  onHandleShowTable: React.PropTypes.func.isRequired,
 }

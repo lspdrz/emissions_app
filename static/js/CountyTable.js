@@ -1,12 +1,24 @@
 import React from 'react';
+import { EmissionsStats } from './EmissionsStats';
 
 export class CountyTable extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  round(value, decimals) {
-    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+
+  makeProperNoun(string) {
+    var temp = string.slice(1, string.length);
+    temp = temp.toLowerCase();
+    console.log(string[0]+temp);
+    return string[0] + temp;
+  }
+
+  companyOrCompanies(num) {
+    if (num == 1) {
+      return num + " company";
+    }
+    return num + " companies";
   }
 
   render() {
@@ -41,37 +53,18 @@ export class CountyTable extends React.Component {
 
     if (this.props.showTable) {
       return(
-      <div>
-        <h1>{this.props.county}</h1>
-        <p>{this.props.county} has {num} companies that need
-        to report their emissions to the TCEQ.</p>
-        <h2>Emissions</h2>
-        <section>
-        <div className="emission-stats">
-          <div className="stat">
-            <p>Carbon Monoxide</p>
-            <p><b>{Math.round(co_tpy)}</b></p>
-          </div>
-          <div className="stat">
-            <p>Nitrous Oxide</p>
-            <p><b>{Math.round(nox_tpy)}</b></p>
-          </div>
-          <div className="stat">
-            <p>Lead</p>
-            <p><b>{Math.round(pb_tpy)}</b></p>
-          </div>
-          <div className="stat">
-            <p>Particular Matter (more than 10 microns)</p>
-            <p><b>{Math.round(pm_ten_tpy)}</b></p>
-          </div>
-          <div className="stat">
-            <p>Volatile Organic Compounds</p>
-            <p><b>{Math.round(voc_tpy)}</b></p>
-          </div>
+        <div>
+          <h1>{this.props.county}</h1>
+          <p>{this.makeProperNoun(this.props.county)} has {this.companyOrCompanies(num)} that need
+          to report their emissions to the TCEQ.</p>
+          <EmissionsStats county = {this.props.county}
+                      co_tpy = {co_tpy}
+                      nox_tpy = {nox_tpy}
+                      pb_tpy = {pb_tpy}
+                      pm_ten_tpy = {pm_ten_tpy}
+                      voc_tpy = {voc_tpy} />
         </div>
-        </section>
-      </div>
-    );
+      );
     }
     return <div></div>;
   }

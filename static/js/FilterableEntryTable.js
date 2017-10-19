@@ -1,6 +1,6 @@
 import React from 'react';
 import { SearchBar } from './SearchBar';
-import { CountyButtonRows } from './CountyButtonRows';
+import { CountyButtons } from './CountyButtons';
 import { CountyTable } from './CountyTable';
 
 export class FilterableEntryTable extends React.Component {
@@ -45,7 +45,7 @@ export class FilterableEntryTable extends React.Component {
         <div className="search-results">
           <SearchBar filterText={this.state.filterText}
                    onFilterTextInput={this.handleFilterTextInput}/>
-          <CountyButtonRows
+          <CountyButtons
                       filterText={this.state.filterText}
                       entries={this.props.entries}
                       county={this.state.county}
