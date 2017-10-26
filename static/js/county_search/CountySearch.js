@@ -1,5 +1,5 @@
 //Require scss
-require('../../styles/scss/index.scss');
+require('../../styles/scss/county_search.scss');
 
 import React from 'react';
 import ReactDOM from 'react-dom';

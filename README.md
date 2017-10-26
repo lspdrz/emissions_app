@@ -1,4 +1,5 @@
 Periodically updated live versions of the website: https://emissions-app.herokuapp.com/
+The page takes a minute to load, as I'm using the free Heroku service
 
 Django Rest Framework + React
 =============================
