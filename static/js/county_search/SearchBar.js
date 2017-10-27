@@ -1,33 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { string, func } from 'prop-types';
 
-export class SearchBar extends React.Component {
-  constructor(props) {
-    super(props);
+export default class SearchBar extends React.Component {
 
-    this.handleFilterTextInputChange = this.handleFilterTextInputChange.bind(this);
+  state = {
+
+  }
+
+  static propTypes  = {
+    filterText: string.isRequired,
+    onFilterTextInput: func.isRequired
+  }
+
+  static defaultProps = {
+    filterText: '',
+    onFilterTextInput: {}
   }
 
   //onChange function for user input
-  handleFilterTextInputChange(e) {
+  handleFilterTextInputChange = (e) => {
     this.props.onFilterTextInput(e.target.value);
   }
 
   render() {
+    const {
+      filterText
+    } = this.props
+
     return (
       <form className="search-form">
         <input
                className="search-bar"
                type="text"
                placeholder="Search for County"
-               value={this.props.filterText}
+               value={filterText}
                onChange={this.handleFilterTextInputChange} />
       </form>
     );
   }
-}
-
-//Prop Types:
-SearchBar.propTypes = {
-  filterText: React.PropTypes.string.isRequired,
-  onFilterTextInput: React.PropTypes.func.isRequired,
 }

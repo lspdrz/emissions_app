@@ -1,10 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { CountySearch } from './county_search/CountySearch.js';
-import { CountyMap } from './county_map/CountyMap.js';
+import CountySearch from './county_search/CountySearch';
+import CountyMap from './county_map/CountyMap.js';
 
-export class Main extends React.Component {
+class Main extends Component {
 
   MyCountySearch() {
     return (
@@ -23,3 +22,5 @@ export class Main extends React.Component {
     );
   }
 }
+
+export default Main

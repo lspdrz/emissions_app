@@ -1,27 +1,29 @@
-import React from 'react';
-import { SearchBar } from './SearchBar';
-import { CountyButtons } from './CountyButtons';
-import { CountyTable } from './CountyTable';
+import React, { Component } from 'react';
+import { array } from 'prop-types';
 
-export class FilterableEntryTable extends React.Component {
-  constructor(props) {
-    super(props);
+//Subcomponents;
+import SearchBar from './SearchBar';
+import CountyButtons from './CountyButtons';
+import CountyTable from './CountyTable';
 
-    //filtered text to be passed to the SearchBar
-    this.state = {
-      filterText: '',
-      showTable: false,
-      county: '',
-    };
+export default class FilterableCountyTable extends Component {
 
-    //onChange function to be passed to the SearchBar
-    this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
-    //onChange function to be passed to the CountyButtonRows
-    this.handleShowTable = this.handleShowTable.bind(this);
+  state = {
+    filterText: '',
+    county: '',
+    showTable: false
+  }
+
+  static propTypes = {
+    counties: array.isRequired
+  }
+
+  static defaultProps = {
+    counties: []
   }
 
   //onChange function changes the filteredText state
-  handleFilterTextInput(filterText) {
+  handleFilterTextInput = (filterText) => {
     this.setState({
       filterText: filterText,
       showTable: false
@@ -31,7 +33,7 @@ export class FilterableEntryTable extends React.Component {
   // Handles the button action, changing the
   // showTable state boolean every time
   // button is clicked
-  handleShowTable(county) {
+  handleShowTable = (county) => {
     this.setState(prevState => ({
       showTable: !prevState.showTable,
       county: county,
@@ -40,6 +42,10 @@ export class FilterableEntryTable extends React.Component {
   }
 
   render() {
+    const {
+      counties
+    } = this.props
+
     return (
       <div>
         <div className="search-results">
@@ -47,7 +53,7 @@ export class FilterableEntryTable extends React.Component {
                    onFilterTextInput={this.handleFilterTextInput}/>
           <CountyButtons
                       filterText={this.state.filterText}
-                      entries={this.props.entries}
+                      counties={counties}
                       county={this.state.county}
                       onHandleShowTable={this.handleShowTable} />
         </div>
@@ -55,14 +61,9 @@ export class FilterableEntryTable extends React.Component {
           <CountyTable
                        showTable={this.state.showTable}
                        county={this.state.county}
-                       entries={this.props.entries} />
+                       counties={counties} />
         </div>
       </div>
     );
   }
 }
-
-//Prop Types
-FilterableEntryTable.propTypes = {
-  entries: React.PropTypes.array.isRequired,
-};

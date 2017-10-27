@@ -1,15 +1,29 @@
-//Require scss
-require('../../styles/scss/county_search.scss');
+import React, { Component } from 'react';
+import { string } from 'prop-types';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { FilterableEntryTable } from './FilterableEntryTable';
+//Subcomponents:
+import FilterableCountyTable from './FilterableCountyTable';
 
-export class CountySearch extends React.Component {
-  constructor(props) {
-    super(props);
+//Styles:
+import '../../styles/scss/county_search.scss';
 
-    this.state = {data: []};
+export default class CountySearch extends Component {
+
+  state = {
+    data: []
+  }
+
+  static propTypes = {
+    url: string.isRequired
+  }
+
+  static defaultProps = {
+    url: 'url-to-api'
+  }
+
+  //When component mounts, run the ajax request to the API
+  componentDidMount() {
+    this.loadEntriesFromServer();
   }
 
   //Fetch the dataset from the API
@@ -24,22 +38,12 @@ export class CountySearch extends React.Component {
     })
   }
 
-  //When component mounts, run the ajax request to the API
-  componentDidMount() {
-    this.loadEntriesFromServer();
-  }
-
   //Render the filtered table of entries
   render() {
     return (
       <div className="react-app">
-        <FilterableEntryTable entries={this.state.data} />
+        <FilterableCountyTable counties={this.state.data} />
       </div>
     )
   }
 }
-
-//Prop Types
-CountySearch.propTypes = {
-  url: React.PropTypes.string.isRequired,
-};

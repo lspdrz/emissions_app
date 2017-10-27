@@ -1,20 +1,34 @@
-import React from 'react';
-import { EmissionsStats } from './EmissionsStats';
+import React, { Component } from 'react';
+import { bool, array, string } from 'prop-types';
 
-export class CountyTable extends React.Component {
-  constructor(props) {
-    super(props);
+//Subcomponents:
+import EmissionsStats from './EmissionsStats';
+
+export default class CountyTable extends Component {
+
+  state = {
+
   }
 
+  static propTypes = {
+    showTable: bool.isRequired,
+    counties: array.isRequired,
+    county: string.isRequired
+  }
 
-  makeProperNoun(string) {
+  static defaultProps = {
+    showTable: false,
+    counties: [],
+    county: ''
+  }
+
+  makeProperNoun = (string) => {
     var temp = string.slice(1, string.length);
     temp = temp.toLowerCase();
-    console.log(string[0]+temp);
     return string[0] + temp;
   }
 
-  companyOrCompanies(num) {
+  companyOrCompanies = (num) => {
     if (num == 1) {
       return num + " company";
     }
@@ -22,7 +36,12 @@ export class CountyTable extends React.Component {
   }
 
   render() {
-    var county = this.props.county;
+    const {
+      showTable,
+      counties,
+      county
+    } = this.props
+
     var num = 0;
     var co_tpy = 0;
     var nox_tpy = 0;
@@ -31,16 +50,10 @@ export class CountyTable extends React.Component {
     var pm_two_five_tpy = 0;
     var so_two_tpy = 0;
     var voc_tpy = 0;
-    //Array to hold entries for the county selected
-    var countyRows = [];
     //Go through entries and push all of the corresponding
     //entries into the counties array:
-    this.props.entries.forEach((entry) => {
+    counties.forEach((entry) => {
       if (county === entry.county) {
-        countyRows.push(
-          <li>
-            {entry.county} - {entry.co_tpy}
-          </li>);
         num++;
         co_tpy += Number(entry.co_tpy);
         nox_tpy += Number(entry.nox_tpy);
@@ -51,14 +64,13 @@ export class CountyTable extends React.Component {
       }
     });
 
-    if (this.props.showTable) {
+    if (showTable) {
       return(
         <div>
-          <h1>{this.props.county}</h1>
-          <p>{this.makeProperNoun(this.props.county)} has {this.companyOrCompanies(num)} that need
+          <h1>{county}</h1>
+          <p>{this.makeProperNoun(county)} has {this.companyOrCompanies(num)} that need
           to report their emissions to the TCEQ.</p>
-          <EmissionsStats county = {this.props.county}
-                      co_tpy = {co_tpy}
+          <EmissionsStats co_tpy = {co_tpy}
                       nox_tpy = {nox_tpy}
                       pb_tpy = {pb_tpy}
                       pm_ten_tpy = {pm_ten_tpy}
@@ -69,11 +81,4 @@ export class CountyTable extends React.Component {
     return <div></div>;
   }
 
-}
-
-//Prop Types:
-CountyTable.propTypes = {
-  showTable: React.PropTypes.bool.isRequired,
-  entries: React.PropTypes.array.isRequired,
-  county: React.PropTypes.string.isRequired,
 }

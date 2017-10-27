@@ -1,25 +1,53 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { array, string, func } from 'prop-types';
 
-export class CountyButtons extends React.Component {
-  constructor(props) {
-    super(props);
+export default class CountyButtons extends Component {
 
-    this.handleShowTableChange = this.handleShowTableChange.bind(this);
+  state = {
+
+  }
+
+  static propTypes = {
+    counties: array.isRequired,
+    filterText: string.isRequired,
+    onHandleShowTable: func.isRequired
+  }
+
+  static defaultProps = {
+    counties: [],
+    filterText: '',
+    onHandleShowTable: {}
   }
 
   //onChange function for button click
-  handleShowTableChange(e) {
+  handleShowTableChange = (e) => {
     this.props.onHandleShowTable(e.target.value);
   }
 
+  //Function to test if rows array already has a row with unique key
+  findKey(rows, keyToSearch) {
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].key == keyToSearch) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
   render() {
+    const {
+      counties,
+      filterText
+    } = this.props
+
     //Array to hold entry rows
     //and display them as buttons to select
     var rows = [];
+    var num = 0;
 
     //Push the entry to rows array if entry is equal to user input
-    this.props.entries.forEach((entry) => {
-      var userInput = this.props.filterText;
+    counties.forEach((entry) => {
+      var userInput = filterText;
       //Test for upper case user input, since all entries are in upper case
       if (
         userInput === ''
@@ -33,23 +61,17 @@ export class CountyButtons extends React.Component {
                             value={entry.county}
                             onClick={this.handleShowTableChange}>
                            {entry.county}
-                   </button>
+                       </button>
       //If the button is not already present,
       //create and push to array:
-      if (rows.indexOf(newRow) === -1) {
+      if (this.findKey(rows, entry.county) === -1) {
         rows.push(newRow);
       }
     });
     return (
       <div>
-      {rows}
+        {rows}
       </div>
     );
   }
-}
-
-CountyButtons.PropTypes = {
-  entries: React.PropTypes.array.isRequired,
-  filterText: React.PropTypes.string.isRequired,
-  onHandleShowTable: React.PropTypes.func.isRequired,
 }
