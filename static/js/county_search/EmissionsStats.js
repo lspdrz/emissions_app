@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { string, number } from 'prop-types';
 
-export default class EmissionsStats extends React.Component {
+export default class EmissionsStats extends Component {
 
   state = {
 
@@ -55,7 +55,7 @@ export default class EmissionsStats extends React.Component {
           <p><b>{this.round(pb_tpy, 5)}</b></p>
         </div>
         <div className="stat">
-          <p>Particular Matter (more than 10 microns)</p>
+          <p>Particular Matter (less than 10 microns in diameter)</p>
           <p><b>{this.round(pm_ten_tpy, 2)}</b></p>
         </div>
         <div className="stat">

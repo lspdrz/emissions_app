@@ -4,9 +4,6 @@ import { string } from 'prop-types';
 //Subcomponents:
 import FilterableCountyTable from './FilterableCountyTable';
 
-//Styles:
-import '../../styles/scss/county_search.scss';
-
 export default class CountySearch extends Component {
 
   state = {
@@ -25,7 +22,7 @@ export default class CountySearch extends Component {
   componentDidMount() {
     this.loadEntriesFromServer();
   }
-
+  
   //Fetch the dataset from the API
   loadEntriesFromServer() {
     $.ajax({
@@ -41,7 +38,7 @@ export default class CountySearch extends Component {
   //Render the filtered table of entries
   render() {
     return (
-      <div className="react-app">
+      <div className="county-search">
         <FilterableCountyTable counties={this.state.data} />
       </div>
     )
