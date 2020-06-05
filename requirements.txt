@@ -2,7 +2,7 @@ certifi==2017.7.27.1
 chardet==3.0.4
 coreschema==0.0.4
 dj-database-url==0.4.2
-Django==1.8.4
+Django==1.11.29
 django-webpack-loader==0.2.4
 djangorestframework==3.3.2
 gunicorn==19.7.1
@@ -21,7 +21,7 @@ certifi==2017.7.27.1
 chardet==3.0.4
 coreschema==0.0.4
 dj-database-url==0.4.2
-Django==1.8.4
+Django==1.11.29
 django-webpack-loader==0.2.4
 djangorestframework==3.3.2
 gunicorn==19.7.1
@@ -40,7 +40,7 @@ certifi==2017.7.27.1
 chardet==3.0.4
 coreschema==0.0.4
 dj-database-url==0.4.2
-Django==1.8.4
+Django==1.11.29
 django-environ==0.4.4
 django-webpack-loader==0.2.4
 djangorestframework==3.3.2
