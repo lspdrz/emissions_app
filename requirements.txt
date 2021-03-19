@@ -4,7 +4,7 @@ coreschema==0.0.4
 dj-database-url==0.4.2
 Django==1.8.4
 django-webpack-loader==0.2.4
-djangorestframework==3.3.2
+djangorestframework==3.11.2
 gunicorn==19.7.1
 httpie==0.9.9
 idna==2.6
@@ -23,7 +23,7 @@ coreschema==0.0.4
 dj-database-url==0.4.2
 Django==1.8.4
 django-webpack-loader==0.2.4
-djangorestframework==3.3.2
+djangorestframework==3.11.2
 gunicorn==19.7.1
 httpie==0.9.9
 idna==2.6
@@ -43,7 +43,7 @@ dj-database-url==0.4.2
 Django==1.8.4
 django-environ==0.4.4
 django-webpack-loader==0.2.4
-djangorestframework==3.3.2
+djangorestframework==3.11.2
 gunicorn==19.7.1
 httpie==0.9.9
 idna==2.6
