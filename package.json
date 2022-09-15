@@ -32,7 +32,7 @@
     "webpack-bundle-tracker": "0.0.93"
   },
   "dependencies": {
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "d3-array": "1.2.1",
     "d3-axis": "1.0.8",
     "d3-brush": "1.0.4",
